@@ -6079,6 +6079,14 @@ blockquote {
     margin-left: 0rem;
   }
 
+  .header-component-grid {
+    height: 110vh;
+  }
+
+  .content-block.home-header-content-left {
+    height: 70%;
+  }
+
   .work-header-bottom {
     padding-left: 6rem;
   }
@@ -6087,6 +6095,14 @@ blockquote {
 @media screen and (min-width: 1920px) {
   .link-content-block.licenses {
     height: 30vh;
+  }
+
+  .header-component-grid {
+    height: 110vh;
+  }
+
+  .content-block.home-header-content-left {
+    height: 70%;
   }
 
   .content-block.home-about-content-left {
@@ -7349,6 +7365,11 @@ blockquote {
 
   .contact-form-wrapper {
     padding: 3.5rem 2rem 2.5rem;
+  }
+
+  .section-faq {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
   }
 
   .nav-menu-component {
