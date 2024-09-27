@@ -138,46 +138,46 @@ export default function Portfolio() {
             </div>
           </div>
         </nav>
-        <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div className="space-y-6">
-                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                  <span className="block">Hi, I'm <span className="text-[#296e83]">Milan</span>, a</span>
-                  <FlipWords
-                    words={["Product Manager", "Data Scientist", "Digital Leader"]}
-                    className="text-[#296e83] -ml-2"
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section id="home" className="min-h-screen flex items-center justify-center">
+            <div className="w-full">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="space-y-6">
+                  <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+                    <span className="block">Hi, I'm <span className="text-[#296e83]">Milan</span>, a</span>
+                    <FlipWords
+                      words={["Product Manager", "Data Scientist", "Digital Leader"]}
+                      className="text-[#296e83] -ml-2"
+                    />
+                  </h1>
+                  <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
+                  Unlocking impact and driving growth through data-driven product management
+                  </p>
+                  <div className="flex items-center space-x-4">
+                    <Button asChild size="lg">
+                      <a href="https://www.linkedin.com/in/milan-nguyen/" target="_blank" rel="noopener noreferrer">
+                        Contact Me
+                      </a>
+                    </Button>
+                    <Button variant="outline" size="lg" onClick={() => scrollToSection('profile')}>
+                      Learn More
+                    </Button>
+                  </div>
+                </div>
+                <div className="relative h-[600px] w-full rounded-lg overflow-hidden shadow-xl">
+                  <Image
+                    src="/images/web3-p-1080.webp"
+                    alt="Profile image"
+                    fill
+                    style={{ objectFit: 'cover', objectPosition: 'top' }}
+                    className="rounded-lg"
                   />
-                </h1>
-                <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
-                Unlocking impact and driving growth through data-driven product management
-                </p>
-                <div className="flex items-center space-x-4">
-                  <Button asChild size="lg">
-                    <a href="https://www.linkedin.com/in/milan-nguyen/" target="_blank" rel="noopener noreferrer">
-                      Contact Me
-                    </a>
-                  </Button>
-                  <Button variant="outline" size="lg" onClick={() => scrollToSection('profile')}>
-                    Learn More
-                  </Button>
                 </div>
               </div>
-              <div className="relative h-[600px] w-full rounded-lg overflow-hidden shadow-xl">
-                <Image
-                  src="/images/web3-p-1080.webp"
-                  alt="Profile image"
-                  fill
-                  style={{ objectFit: 'cover', objectPosition: 'top' }}
-                  className="rounded-lg"
-                />
-              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section id="kpi" className="py-8 bg-white dark:bg-gray-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section id="kpi" className="py-8 bg-white dark:bg-gray-800 rounded-2xl my-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {kpiData.map((item, index) => (
                 <div key={index} className="text-center">
@@ -186,91 +186,91 @@ export default function Portfolio() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <div className="w-full overflow-hidden py-12">
-          <motion.div
-            className="flex"
-            animate={{
-              x: ["0%", "-50%"],
-            }}
-            transition={{
-              x: {
-                duration: 20,
-                repeat: Infinity,
-                repeatType: "loop",
-                ease: "linear",
-              },
-            }}
-          >
-            {duplicatedIcons.map((item, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center justify-center mx-8"
-                style={{ minWidth: "100px" }}
-              >
-                <item.Icon className="w-12 h-12 text-primary" aria-hidden="true" />
-                <span className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-300">{item.name}</span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
-        <section id="profile" className="py-16 flex items-center justify-center">
-          <Card className="w-full max-w-2xl">
-            <CardContent className="p-6">
-              <h2 className="text-2xl font-bold mb-4">Profile</h2>
-              <p className="text-gray-600 dark:text-gray-300">
-              A McKinsey Engagement Manager with professional experience from multiple countries working in digital consulting, product engineering, data science and software development, focusing on innovation, solution design, agile transformations, process automation and financial positions. 
-              </p>
-              <br />
-              <p className="text-gray-600 dark:text-gray-300">
-              Awarded public speaker with advanced proficiency in mathematics, programming, machine learning and quantitative finance with a history in the oil and energy, pharma, higher education, human resources, digital marketing and sales industries.
-              </p>
-            </CardContent>
-          </Card>
-        </section>
-
-        <section id="experience" className="py-16 flex items-center justify-center">
-          <Card className="w-full max-w-2xl">
-            <CardContent className="p-6">
-              <h2 className="text-2xl font-bold mb-4">Experience</h2>
-              <ul className="space-y-4">
-                <li>
-                  <h3 className="font-semibold">TBD</h3>
-                  <p className="text-gray-600 dark:text-gray-300">tbd</p>
-                  <p>TBD</p>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-        </section>
-
-        <section id="impact" className="py-16 flex items-center justify-center">
-          <div className="w-full max-w-7xl px-4">
-            <h2 className="text-3xl font-bold mb-12 text-center">Impact</h2>
-            <FocusCards cards={impactCards} />
-          </div>
-        </section>
-
-        <section id="faq" className="py-16 flex items-center justify-center">
-          <div className="w-full max-w-2xl px-4">
-            <h2 className="text-2xl font-bold mb-8 text-center">Common Queries Answered</h2>
-            <Accordion type="single" collapsible className="w-full">
-              {faqItems.map((item, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-base">
-                    {item.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-base">
-                    {item.answer}
-                  </AccordionContent>
-                </AccordionItem>
+          <div className="w-full overflow-hidden py-12">
+            <motion.div
+              className="flex"
+              animate={{
+                x: ["0%", "-50%"],
+              }}
+              transition={{
+                x: {
+                  duration: 20,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  ease: "linear",
+                },
+              }}
+            >
+              {duplicatedIcons.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center justify-center mx-8"
+                  style={{ minWidth: "100px" }}
+                >
+                  <item.Icon className="w-12 h-12 text-primary" aria-hidden="true" />
+                  <span className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-300">{item.name}</span>
+                </div>
               ))}
-            </Accordion>
+            </motion.div>
           </div>
-        </section>
+
+          <section id="profile" className="py-16 flex items-center justify-center">
+            <Card className="w-full">
+              <CardContent className="p-6">
+                <h2 className="text-2xl font-bold mb-4">Profile</h2>
+                <p className="text-gray-600 dark:text-gray-300">
+                A McKinsey Engagement Manager with professional experience from multiple countries working in digital consulting, product engineering, data science and software development, focusing on innovation, solution design, agile transformations, process automation and financial positions. 
+                </p>
+                <br />
+                <p className="text-gray-600 dark:text-gray-300">
+                Awarded public speaker with advanced proficiency in mathematics, programming, machine learning and quantitative finance with a history in the oil and energy, pharma, higher education, human resources, digital marketing and sales industries.
+                </p>
+              </CardContent>
+            </Card>
+          </section>
+
+          <section id="experience" className="py-16 flex items-center justify-center">
+            <Card className="w-full">
+              <CardContent className="p-6">
+                <h2 className="text-2xl font-bold mb-4">Experience</h2>
+                <ul className="space-y-4">
+                  <li>
+                    <h3 className="font-semibold">TBD</h3>
+                    <p className="text-gray-600 dark:text-gray-300">tbd</p>
+                    <p>TBD</p>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </section>
+
+          <section id="impact" className="py-16 flex items-center justify-center">
+            <div className="w-full">
+              <h2 className="text-3xl font-bold mb-12 text-center">Impact</h2>
+              <FocusCards cards={impactCards} />
+            </div>
+          </section>
+
+          <section id="faq" className="py-16 flex items-center justify-center">
+            <div className="w-full">
+              <h2 className="text-2xl font-bold mb-8 text-center">Common Queries Answered</h2>
+              <Accordion type="single" collapsible className="w-full">
+                {faqItems.map((item, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger className="text-base">
+                      {item.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-base">
+                      {item.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </section>
+        </div>
       </div>
     </ThemeProvider>
   )
