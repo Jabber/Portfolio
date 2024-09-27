@@ -36,15 +36,6 @@ export default function Portfolio() {
   const [duplicatedIcons, setDuplicatedIcons] = useState(icons)
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme')
-    if (savedTheme) {
-      setTheme(savedTheme)
-    } else {
-      setTheme('system')
-    }
-  }, [setTheme])
-
-  useEffect(() => {
     setMounted(true)
     setDuplicatedIcons([...icons, ...icons])
   }, [])
@@ -125,10 +116,15 @@ export default function Portfolio() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                aria-label="Toggle theme"
               >
-                <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                <span className="sr-only">Toggle theme</span>
+                {mounted && (
+                  theme === 'dark' ? (
+                    <Sun className="h-[1.2rem] w-[1.2rem]" />
+                  ) : (
+                    <Moon className="h-[1.2rem] w-[1.2rem]" />
+                  )
+                )}
               </Button>
               <Button variant="ghost" size="icon" asChild>
                 <a href="https://www.linkedin.com/in/milan-nguyen/" target="_blank" rel="noopener noreferrer">
