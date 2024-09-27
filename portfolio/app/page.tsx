@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Moon, Sun, Linkedin, Github, Code, Database, FileCode, Figma, Globe, Laptop, Layers, Smartphone, Tablet } from "lucide-react"
+import { Moon, Sun, Linkedin, Github, Code, Database, FileCode, Figma, Globe, Laptop, Layers, Smartphone, Tablet, Piano } from "lucide-react"
 import { useTheme } from "next-themes"
 import { FocusCards } from "@/components/ui/focus-cards"
 import { FlipWords } from "@/components/ui/flip-words"
@@ -18,15 +18,11 @@ import { ThemeProvider } from "next-themes"
 
 const icons = [
   { Icon: Code, name: "Code" },
-  { Icon: Database, name: "Database" },
-  { Icon: FileCode, name: "File Code" },
+  { Icon: Database, name: "Databases" },
   { Icon: Figma, name: "Figma" },
   { Icon: Github, name: "GitHub" },
   { Icon: Globe, name: "Web" },
-  { Icon: Laptop, name: "Laptop" },
-  { Icon: Layers, name: "Layers" },
-  { Icon: Smartphone, name: "Smartphone" },
-  { Icon: Tablet, name: "Tablet" },
+  { Icon: Piano, name: "Piano" },
 ]
 
 export default function Portfolio() {
@@ -42,7 +38,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'kpi', 'profile', 'experience', 'impact', 'faq']
+      const sections = ['home', 'kpi', 'experience', 'impact', 'faq']
       const scrollPosition = window.scrollY
 
       for (const section of sections) {
@@ -66,9 +62,9 @@ export default function Portfolio() {
 
   const kpiData = [
     { label: "Years Experience", value: "10+" },
-    { label: "Projects Completed", value: "100+" },
-    { label: "Continents Conquered", value: "3" },
-    { label: "Industries Served", value: "20+" },
+    { label: "People Led", value: "100+" },
+    { label: "Products Built", value: "8" },
+    { label: "Industries Served", value: "10+" },
   ]
 
   const impactCards = [
@@ -96,22 +92,24 @@ export default function Portfolio() {
           <title>Milan Nguyen - Digital Leader</title>
           <link rel="icon" href="/images/favicon.png" />
         </Head>
-        <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg px-6 py-3 flex items-center justify-between w-[calc(100vw-2rem)] max-w-6xl">
-            <ul className="flex space-x-4">
-              {['Home', 'Profile', 'Experience', 'Impact', 'FAQ'].map((item) => (
-                <li key={item}>
-                  <Button
-                    variant="ghost"
-                    className={`text-sm font-medium ${activeSection === item.toLowerCase() ? 'text-primary' : 'text-gray-600 dark:text-gray-300'}`}
-                    onClick={() => scrollToSection(item.toLowerCase())}
-                  >
-                    {item}
-                  </Button>
-                </li>
-              ))}
-            </ul>
-            <div className="flex items-center space-x-4">
+        <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-6xl px-4">
+          <div className="flex justify-between">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg px-6 py-3">
+              <ul className="flex space-x-4">
+                {['Home', 'Experience', 'Impact', 'FAQ'].map((item) => (
+                  <li key={item}>
+                    <Button
+                      variant="ghost"
+                      className={`text-sm font-medium ${activeSection === item.toLowerCase() ? 'text-primary' : 'text-gray-600 dark:text-gray-300'}`}
+                      onClick={() => scrollToSection(item.toLowerCase())}
+                    >
+                      {item}
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg px-6 py-3 flex items-center space-x-4">
               <Button
                 variant="ghost"
                 size="icon"
@@ -143,13 +141,14 @@ export default function Portfolio() {
             <div className="w-full">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="space-y-6">
-                  <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                    <span className="block">Hi, I'm <span className="text-[#296e83]">Milan</span>, a</span>
+                  <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-5xl h-[100px] mb-8">
+                    <span className="block mb-4">Hi, I'm <span className="text-[#296e83]">Milan</span>, a</span>
                     <FlipWords
                       words={["Product Manager", "Data Scientist", "Digital Leader"]}
                       className="text-[#296e83] -ml-2"
                     />
                   </h1>
+                  <br />
                   <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
                   Unlocking impact and driving growth through data-driven product management
                   </p>
@@ -159,7 +158,7 @@ export default function Portfolio() {
                         Contact Me
                       </a>
                     </Button>
-                    <Button variant="outline" size="lg" onClick={() => scrollToSection('profile')}>
+                    <Button variant="outline" size="lg" onClick={() => scrollToSection('experience')}>
                       Learn More
                     </Button>
                   </div>
@@ -177,14 +176,16 @@ export default function Portfolio() {
             </div>
           </section>
 
-          <section id="kpi" className="py-8 bg-white dark:bg-gray-800 rounded-2xl my-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {kpiData.map((item, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-4xl font-bold text-[#296e83] mb-2">{item.value}</div>
-                  <div className="text-gray-600 dark:text-gray-300">{item.label}</div>
-                </div>
-              ))}
+          <section id="kpi" className="w-screen py-8 bg-white dark:bg-gray-800 border-y border-gray-200 dark:border-gray-700 shadow-lg -mx-[calc((100vw-100%)/2)]">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                {kpiData.map((item, index) => (
+                  <div key={index} className="text-center">
+                    <div className="text-4xl font-bold text-[#296e83] mb-2">{item.value}</div>
+                    <div className="text-gray-600 dark:text-gray-300">{item.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 
@@ -192,16 +193,17 @@ export default function Portfolio() {
             <motion.div
               className="flex"
               animate={{
-                x: ["0%", "-50%"],
+                x: ["0%", "-100%"],
               }}
               transition={{
                 x: {
-                  duration: 20,
+                  duration: 10,
                   repeat: Infinity,
                   repeatType: "loop",
                   ease: "linear",
                 },
               }}
+              style={{ width: "100%" }}
             >
               {duplicatedIcons.map((item, index) => (
                 <div
@@ -215,54 +217,35 @@ export default function Portfolio() {
               ))}
             </motion.div>
           </div>
-
-          <section id="profile" className="py-16 flex items-center justify-center">
-            <Card className="w-full">
-              <CardContent className="p-6">
-                <h2 className="text-2xl font-bold mb-4">Profile</h2>
-                <p className="text-gray-600 dark:text-gray-300">
+          <section id="experience" className="py-16">
+            <h2 className="text-2xl font-bold mb-6 text-left">Experience</h2>
+            <div className="w-full max-w-[calc(100%-12rem)] mx-auto">
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
                 A McKinsey Engagement Manager with professional experience from multiple countries working in digital consulting, product engineering, data science and software development, focusing on innovation, solution design, agile transformations, process automation and financial positions. 
-                </p>
-                <br />
-                <p className="text-gray-600 dark:text-gray-300">
+              </p>
+              <p className="text-gray-600 dark:text-gray-300">
                 Awarded public speaker with advanced proficiency in mathematics, programming, machine learning and quantitative finance with a history in the oil and energy, pharma, higher education, human resources, digital marketing and sales industries.
-                </p>
-              </CardContent>
-            </Card>
+              </p>
+            </div>
           </section>
 
-          <section id="experience" className="py-16 flex items-center justify-center">
-            <Card className="w-full">
-              <CardContent className="p-6">
-                <h2 className="text-2xl font-bold mb-4">Experience</h2>
-                <ul className="space-y-4">
-                  <li>
-                    <h3 className="font-semibold">TBD</h3>
-                    <p className="text-gray-600 dark:text-gray-300">tbd</p>
-                    <p>TBD</p>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </section>
-
-          <section id="impact" className="py-16 flex items-center justify-center">
+          <section id="impact" className="py-16">
+            <h2 className="text-2xl font-bold mb-8 text-left">Impact</h2>
             <div className="w-full">
-              <h2 className="text-3xl font-bold mb-12 text-center">Impact</h2>
               <FocusCards cards={impactCards} />
             </div>
           </section>
 
           <section id="faq" className="py-16 flex items-center justify-center">
-            <div className="w-full">
-              <h2 className="text-2xl font-bold mb-8 text-center">Common Queries Answered</h2>
+            <div className="w-full max-w-[calc(100%-12rem)] bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg p-6">
+              <h2 className="text-2xl font-bold mb-8 text-left">Common Queries Answered</h2>
               <Accordion type="single" collapsible className="w-full">
                 {faqItems.map((item, index) => (
                   <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className="text-base">
+                    <AccordionTrigger className="text-base text-left justify-between">
                       {item.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-base">
+                    <AccordionContent className="text-base text-left">
                       {item.answer}
                     </AccordionContent>
                   </AccordionItem>
