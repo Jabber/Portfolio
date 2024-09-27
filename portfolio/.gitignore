@@ -16,6 +16,7 @@
 /build
 
 # Misc
+**/.DS_Store
 .DS_Store
 *.pem
 
@@ -39,4 +40,5 @@ next-env.d.ts
 !.vscode/extensions.json
 
 # Cursor
+**/.cursorignore
 .cursorignore
