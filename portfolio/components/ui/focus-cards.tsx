@@ -57,8 +57,8 @@ export function FocusCards({ cards }: { cards: Card[] }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto md:px-8 w-full">
       {cards.map((card, index) => (
-        <div 
-          key={card.title} 
+        <div
+          key={card.title}
           className="flex flex-col relative"
           onMouseEnter={() => setHovered(index)}
           onMouseLeave={() => setHovered(null)}
@@ -69,18 +69,17 @@ export function FocusCards({ cards }: { cards: Card[] }) {
             hovered={hovered}
             setHovered={setHovered}
           />
-          <div 
+          <div
             className={cn(
               "absolute top-0 left-0 right-0 p-4 transition-opacity duration-100 rounded-t-lg",
               hovered === index ? "opacity-100" : "opacity-0"
             )}
             style={{
-              background: 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)'
+              background:
+                "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)",
             }}
           >
-            <p className="text-sm text-white">
-              {card.subtitle}
-            </p>
+            <p className="text-sm text-white">{card.subtitle}</p>
           </div>
         </div>
       ))}
