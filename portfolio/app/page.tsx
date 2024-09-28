@@ -68,10 +68,10 @@ export default function Portfolio() {
   ]
 
   const impactCards = [
-    { title: "Product Management", subtitle: "Driving innovation and growth", src: "/images/pm-p-1600.webp" },
-    { title: "Software Development", subtitle: "Building scalable solutions", src: "/images/build-p-1600.webp" },
-    { title: "Data Science", subtitle: "Unlocking insights from data", src: "/images/ds-p-1080.webp" },
-    { title: "Public Speaking", subtitle: "Sharing knowledge and inspiration", src: "/images/talks-p-1600.webp" },
+    { title: "Product Management", subtitle: "Extensive experience in product management with a proven track record: development of a cost engineering BI tool with over 1000 corporate users, or an asset-based consulting tool, merging UI and UX efforts with rapid prototypes, and coordinating 8 workstreams from in-house app development through service blueprint creation and architectural planning to the fast-track innovation of student orientation.", src: "/images/pm-p-1600.webp" },
+    { title: "Digital Business Building", subtitle: "Built teams of 20+ people for product development, coordinated design teams, and led teams of consultants to shape the long-term transformation strategy of a higher education institution. Managed multiple cross-functional agile teams of 6-10 people developing and designing enterprise-scale digital solutions.", src: "/images/build-p-1600.webp" },
+    { title: "Data & Analytics", subtitle: "Managed the development of advanced analytics tools, BI tools, optimized quality control scheduling models in Python, being responsible for data analytics strategy, driving the development of intelligent solutions with AI, ML. Implemented data mining algorithms and automated processes for HR startups. Built portfolio optimization models for energy trading.", src: "/images/ds-p-1080.webp" },
+    { title: "Talks & Lectures", subtitle: "Awarded for delivering the best speech in a Carpathian Basin-wide Rhetorics Competition, highlighting exceptional ability to effectively communicate ideas and thoughts to a diverse audience. Public speaking skills expertly honed through years of experience in delivering engaging, informative, and persuasive speeches for various events, including conferences and workshops.", src: "/images/talks-p-1600.webp" },
   ]
 
   const faqItems = [
@@ -96,12 +96,12 @@ export default function Portfolio() {
           <div className="flex justify-between">
             <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg px-6 py-3">
               <ul className="flex space-x-4">
-                {['Home', 'Experience', 'Impact', 'FAQ'].map((item) => (
+                {['Milan Nguyen', 'Experience', 'Impact', 'FAQ'].map((item) => (
                   <li key={item}>
                     <Button
                       variant="ghost"
-                      className={`text-sm font-medium ${activeSection === item.toLowerCase() ? 'text-primary' : 'text-gray-600 dark:text-gray-300'}`}
-                      onClick={() => scrollToSection(item.toLowerCase())}
+                      className={`text-sm font-medium ${activeSection === (item === 'Milan Nguyen' ? 'home' : item.toLowerCase()) ? 'text-[#296e83]' : 'text-gray-600 dark:text-gray-300'}`}
+                      onClick={() => scrollToSection(item === 'Milan Nguyen' ? 'home' : item.toLowerCase())}
                     >
                       {item}
                     </Button>
@@ -145,7 +145,7 @@ export default function Portfolio() {
                     <span className="block mb-4">Hi, I'm <span className="text-[#296e83]">Milan</span>, a</span>
                     <FlipWords
                       words={["Product Manager", "Data Scientist", "Digital Leader"]}
-                      className="text-[#296e83] -ml-2"
+                      className="text-[#296e83] dark:text-[#296e83] -ml-2"
                     />
                   </h1>
                   <br />
@@ -189,7 +189,12 @@ export default function Portfolio() {
             </div>
           </section>
 
-          <div className="w-full overflow-hidden py-12">
+          <br />
+          <br />
+
+          <div className="w-full overflow-hidden py-12 relative">
+            <div className="absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-gray-100 dark:from-gray-900 to-transparent z-10"></div>
+            <div className="absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-gray-100 dark:from-gray-900 to-transparent z-10"></div>
             <motion.div
               className="flex"
               animate={{
@@ -197,15 +202,15 @@ export default function Portfolio() {
               }}
               transition={{
                 x: {
-                  duration: 10,
+                  duration: 40,
                   repeat: Infinity,
                   repeatType: "loop",
                   ease: "linear",
                 },
               }}
-              style={{ width: "100%" }}
+              style={{ width: "200%" }}
             >
-              {duplicatedIcons.map((item, index) => (
+              {duplicatedIcons.concat(duplicatedIcons).map((item, index) => (
                 <div
                   key={index}
                   className="flex flex-col items-center justify-center mx-8"
@@ -217,20 +222,24 @@ export default function Portfolio() {
               ))}
             </motion.div>
           </div>
-          <section id="experience" className="py-16">
-            <h2 className="text-2xl font-bold mb-6 text-left">Experience</h2>
-            <div className="w-full max-w-[calc(100%-12rem)] mx-auto">
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                A McKinsey Engagement Manager with professional experience from multiple countries working in digital consulting, product engineering, data science and software development, focusing on innovation, solution design, agile transformations, process automation and financial positions. 
-              </p>
-              <p className="text-gray-600 dark:text-gray-300">
-                Awarded public speaker with advanced proficiency in mathematics, programming, machine learning and quantitative finance with a history in the oil and energy, pharma, higher education, human resources, digital marketing and sales industries.
-              </p>
+
+          
+          <section id="experience" className="py-16 flex items-center justify-center">
+            <div className="w-full max-w-[calc(100%-12rem)] bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg p-6">
+              <h2 className="text-2xl font-bold mb-6 text-left">Experience</h2>
+              <div className="w-full">
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  An ex-McKinsey Engagement Manager with professional experience from multiple countries working in digital consulting, product engineering, <span className="text-[#296e83] font-bold">data science and software development</span>, focusing on innovation, solution design, agile transformations, process automation and financial positions. 
+                </p>
+                <p className="text-gray-600 dark:text-gray-300">
+                <span className="text-[#296e83] font-bold">Awarded public speaker</span> with advanced proficiency in mathematics, programming, <span className="text-[#296e83] font-bold">machine learning</span> and quantitative finance with a history in the oil and energy, pharma, higher education, human resources, digital marketing and sales industries.
+                </p>
+              </div>
             </div>
           </section>
 
           <section id="impact" className="py-16">
-            <h2 className="text-2xl font-bold mb-8 text-left">Impact</h2>
+            <h2 className="text-2xl font-bold mb-8 text-center">Impact</h2>
             <div className="w-full">
               <FocusCards cards={impactCards} />
             </div>
