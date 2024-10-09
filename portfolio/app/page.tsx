@@ -89,10 +89,12 @@ export default function Portfolio() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId: string, additionalOffset: number = 0) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const yOffset = -25 - additionalOffset;
+      const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({top: y, behavior: 'smooth'});
     }
   };
 
@@ -259,7 +261,7 @@ export default function Portfolio() {
                     <Button
                       variant="outline"
                       size="lg"
-                      onClick={() => scrollToSection("experience")}
+                      onClick={() => scrollToSection("kpi", 75)}
                     >
                       Learn More
                     </Button>
@@ -373,8 +375,8 @@ export default function Portfolio() {
                     machine learning
                   </span>{" "}
                   and quantitative finance with a history in the oil and energy,
-                  pharma, higher education, human resources, digital marketing
-                  and sales industries.
+                  pharma, higher education, management consulting, human resources, 
+                  digital marketing and sales industries.
                 </p>
               </div>
             </div>
@@ -387,7 +389,7 @@ export default function Portfolio() {
             </div>
           </section>
 
-          <section id="faq" className="py-16 flex items-center justify-center">
+          <section id="faq" className="py-16 flex items-top justify-center">
             <div className="w-full max-w-[calc(100%-12rem)] bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg p-6">
               <h2 className="text-2xl font-bold mb-8 text-left">
                 Common Queries Answered
