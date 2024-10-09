@@ -49,6 +49,16 @@ const icons = [
   { Icon: Github, name: "GitHub" },
   { Icon: Globe, name: "Web" },
   { Icon: Piano, name: "Piano" },
+  { src: "/icons/aftereffects-plain.svg", name: "After Effects" },
+  { src: "/icons/flask-original.svg", name: "Flask" },
+  { src: "/icons/jira-plain.svg", name: "Jira" },
+  { src: "/icons/jupyter-plain-wordmark.svg", name: "Jupyter" },
+  { src: "/icons/pandas-original.svg", name: "Pandas" },
+  { src: "/icons/premierepro-plain.svg", name: "Premiere Pro" },
+  { src: "/icons/python-plain.svg", name: "Python" },
+  { src: "/icons/pytorch-original.svg", name: "PyTorch" },
+  { src: "/icons/sqlite-plain.svg", name: "SQLite" },
+  { src: "/icons/vscode-original.svg", name: "VS Code" },
 ];
 
 export default function Portfolio() {
@@ -315,10 +325,20 @@ export default function Portfolio() {
                   className="flex flex-col items-center justify-center mx-8"
                   style={{ minWidth: "100px" }}
                 >
-                  <item.Icon
-                    className="w-12 h-12 text-primary"
-                    aria-hidden="true"
-                  />
+                  {item.Icon ? (
+                    <item.Icon
+                      className="w-12 h-12 text-primary"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <Image
+                      src={theme === 'dark' && item.whiteSrc ? item.whiteSrc : item.src}
+                      alt={item.name}
+                      width={48}
+                      height={48}
+                      className="text-primary"
+                    />
+                  )}
                   <span className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-300">
                     {item.name}
                   </span>
@@ -335,7 +355,7 @@ export default function Portfolio() {
               <h2 className="text-2xl font-bold mb-6 text-left">Experience</h2>
               <div className="w-full">
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  An ex-McKinsey Engagement Manager with professional experience
+                  An ex-McKinsey Engagement Manager and Lead Data Scientist with professional experience
                   from multiple countries working in digital consulting, product
                   engineering,{" "}
                   <span className="text-[#296e83] font-bold">
