@@ -35,6 +35,7 @@ import {
   Smartphone,
   Tablet,
   Piano,
+  Menu,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { FocusCards } from "@/components/ui/focus-cards";
@@ -66,6 +67,7 @@ export default function Portfolio() {
   const [mounted, setMounted] = useState(false);
   const { setTheme, theme } = useTheme();
   const [duplicatedIcons, setDuplicatedIcons] = useState(icons);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -167,9 +169,18 @@ export default function Portfolio() {
           <link rel="icon" href="/images/favicon.png" />
         </Head>
         <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-6xl px-4">
-          <div className="flex justify-between">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg px-6 py-3">
-              <ul className="flex space-x-4">
+          <div className="flex justify-between space-x-4">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg px-4 py-2 sm:px-6 sm:py-3 flex items-center">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                <Menu className="h-6 w-6" />
+              </Button>
+              <ul className="hidden md:flex space-x-4">
                 {["Milan Nguyen", "Experience", "Impact", "FAQ"].map((item) => (
                   <li key={item}>
                     <Button
@@ -192,7 +203,7 @@ export default function Portfolio() {
                 ))}
               </ul>
             </div>
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg px-6 py-3 flex items-center space-x-4">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg px-4 py-2 sm:px-6 sm:py-3 flex items-center space-x-4">
               <Button
                 variant="ghost"
                 size="icon"
@@ -221,16 +232,43 @@ export default function Portfolio() {
               </Button>
             </div>
           </div>
+          {isMenuOpen && (
+            <div className="md:hidden mt-2 bg-white dark:bg-gray-800 rounded-2xl shadow-lg px-4 py-2">
+              <ul className="flex flex-col space-y-2">
+                {["Milan Nguyen", "Experience", "Impact", "FAQ"].map((item) => (
+                  <li key={item}>
+                    <Button
+                      variant="ghost"
+                      className={`text-sm w-full justify-start ${
+                        activeSection ===
+                        (item === "Milan Nguyen" ? "home" : item.toLowerCase())
+                          ? "text-[#296e83]"
+                          : "text-gray-600 dark:text-gray-300"
+                      }`}
+                      onClick={() => {
+                        scrollToSection(
+                          item === "Milan Nguyen" ? "home" : item.toLowerCase()
+                        );
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      {item}
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </nav>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <section
             id="home"
-            className="min-h-screen flex items-center justify-center"
+            className="min-h-screen flex items-center justify-center pt-24 sm:pt-0"
           >
             <div className="w-full">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="space-y-6">
-                  <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-5xl h-[100px] mb-8">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight h-[100px] mb-8">
                     <span className="block mb-4">
                       Hi, I'm <span className="text-[#296e83]">Milan</span>, a
                     </span>
@@ -244,12 +282,12 @@ export default function Portfolio() {
                     />
                   </h1>
                   <br />
-                  <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
+                  <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
                     Unlocking impact and driving growth through data-driven
                     product management
                   </p>
-                  <div className="flex items-center space-x-4">
-                    <Button asChild size="lg">
+                  <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <Button asChild size="lg" className="w-full sm:w-auto">
                       <a
                         href="https://www.linkedin.com/in/milan-nguyen/"
                         target="_blank"
@@ -262,12 +300,13 @@ export default function Portfolio() {
                       variant="outline"
                       size="lg"
                       onClick={() => scrollToSection("kpi", 75)}
+                      className="w-full sm:w-auto"
                     >
                       Learn More
                     </Button>
                   </div>
                 </div>
-                <div className="relative h-[600px] w-full rounded-lg overflow-hidden shadow-xl">
+                <div className="relative h-[300px] sm:h-[400px] md:h-[600px] w-full rounded-lg overflow-hidden shadow-xl mt-8 sm:mt-0">
                   <Image
                     src="/images/web3-p-1080.webp"
                     alt="Profile image"
@@ -285,13 +324,13 @@ export default function Portfolio() {
             className="w-screen py-8 bg-white dark:bg-gray-800 border-y border-gray-200 dark:border-gray-700 shadow-lg -mx-[calc((100vw-100%)/2)]"
           >
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8">
                 {kpiData.map((item, index) => (
                   <div key={index} className="text-center">
-                    <div className="text-4xl font-bold text-[#296e83] mb-2">
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#296e83] mb-2">
                       {item.value}
                     </div>
-                    <div className="text-gray-600 dark:text-gray-300">
+                    <div className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-300">
                       {item.label}
                     </div>
                   </div>
@@ -353,10 +392,10 @@ export default function Portfolio() {
             id="experience"
             className="py-16 flex items-center justify-center"
           >
-            <div className="w-full max-w-[calc(100%-12rem)] bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg p-6">
-              <h2 className="text-2xl font-bold mb-6 text-left">Experience</h2>
+            <div className="w-full max-w-full sm:max-w-[calc(100%-2rem)] md:max-w-[calc(100%-12rem)] bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg p-4 sm:p-6">
+              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-left">Experience</h2>
               <div className="w-full">
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">
                   An ex-McKinsey Engagement Manager and Lead Data Scientist with professional experience
                   from multiple countries working in digital consulting, product
                   engineering,{" "}
@@ -366,7 +405,7 @@ export default function Portfolio() {
                   , focusing on innovation, solution design, agile
                   transformations, process automation and financial positions.
                 </p>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
                   <span className="text-[#296e83] font-bold">
                     Awarded public speaker
                   </span>{" "}
@@ -390,17 +429,17 @@ export default function Portfolio() {
           </section>
 
           <section id="faq" className="py-16 flex items-top justify-center">
-            <div className="w-full max-w-[calc(100%-12rem)] bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg p-6">
-              <h2 className="text-2xl font-bold mb-8 text-left">
+            <div className="w-full max-w-full sm:max-w-[calc(100%-2rem)] md:max-w-[calc(100%-12rem)] bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg p-4 sm:p-6">
+              <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-left">
                 Common Queries Answered
               </h2>
               <Accordion type="single" collapsible className="w-full">
                 {faqItems.map((item, index) => (
                   <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className="text-base text-left justify-between">
+                    <AccordionTrigger className="text-sm sm:text-base text-left justify-between">
                       {item.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-base text-left">
+                    <AccordionContent className="text-sm sm:text-base text-left">
                       {item.answer}
                     </AccordionContent>
                   </AccordionItem>
