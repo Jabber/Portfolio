@@ -46,20 +46,20 @@ import { ThemeProvider } from "next-themes";
 const icons = [
   { Icon: Github, name: "GitHub" },
   { Icon: Database, name: "Databases" },
-  { src: "/icons/python-plain.svg", name: "Python" },
+  { src: "/icons/light_mode/python-plain.svg", darkSrc: "/icons/dark_mode/python-plain.svg", name: "Python" },
   { Icon: Figma, name: "Figma" },
-  { src: "/icons/jira-plain.svg", name: "Jira" },
+  { src: "/icons/light_mode/jira-plain.svg", darkSrc: "/icons/dark_mode/jira-plain.svg", name: "Jira" },
   { Icon: Piano, name: "Piano" },
-  { src: "/icons/aftereffects-plain.svg", name: "After Effects" },
-  { src: "/icons/flask-original.svg", name: "Flask" },
+  { src: "/icons/light_mode/aftereffects-plain.svg", darkSrc: "/icons/dark_mode/aftereffects-plain.svg", name: "After Effects" },
+  { src: "/icons/light_mode/flask-original.svg", darkSrc: "/icons/dark_mode/flask-original.svg", name: "Flask" },
   { Icon: Globe, name: "Web" },
-  { src: "/icons/jupyter-plain-wordmark.svg", name: "Jupyter" },
-  { src: "/icons/pandas-original.svg", name: "Pandas" },
+  { src: "/icons/light_mode/jupyter-plain-wordmark.svg", darkSrc: "/icons/dark_mode/jupyter-plain-wordmark.svg", name: "Jupyter" },
+  { src: "/icons/light_mode/pandas-original.svg", darkSrc: "/icons/dark_mode/pandas-original.svg", name: "Pandas" },
   { Icon: Code, name: "Code" },
-  { src: "/icons/premierepro-plain.svg", name: "Premiere Pro" },
-  { src: "/icons/pytorch-original.svg", name: "PyTorch" },
-  { src: "/icons/sqlite-plain.svg", name: "SQLite" },
-  { src: "/icons/vscode-original.svg", name: "VS Code" },
+  { src: "/icons/light_mode/premierepro-plain.svg", darkSrc: "/icons/dark_mode/premierepro-plain.svg", name: "Premiere Pro" },
+  { src: "/icons/light_mode/pytorch-original.svg", darkSrc: "/icons/dark_mode/pytorch-original.svg", name: "PyTorch" },
+  { src: "/icons/light_mode/sqlite-plain.svg", darkSrc: "/icons/dark_mode/sqlite-plain.svg", name: "SQLite" },
+  { src: "/icons/light_mode/vscode-original.svg", darkSrc: "/icons/dark_mode/vscode-original.svg", name: "VS Code" },
 ];
 
 export default function Portfolio() {
@@ -373,7 +373,7 @@ export default function Portfolio() {
                     />
                   ) : (
                     <Image
-                      src={theme === 'dark' && item.whiteSrc ? item.whiteSrc : item.src}
+                      src={theme === 'dark' ? item.darkSrc : item.src}
                       alt={item.name}
                       width={48}
                       height={48}
