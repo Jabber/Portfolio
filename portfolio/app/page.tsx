@@ -111,7 +111,7 @@ export default function Portfolio() {
     {
       title: "Product Management",
       subtitle:
-        "Extensive experience in product management with a proven track record: development of a cost engineering BI tool with over 1000 corporate users, or an asset-based consulting tool, merging UI and UX efforts with rapid prototypes, and coordinating 8 workstreams from in-house app development through service blueprint creation and architectural planning to the fast-track innovation of student orientation.",
+        "Extensive experience in product management with a proven track record: development of a cost engineering BI tool with over 1000 corporate users, a 1M USD/yr enterprise SAAS, or an asset-based consulting tool, merging UI and UX efforts with rapid prototypes, coordinating workstreams from in-house app development through service blueprint creation and architectural planning.",
       src: "/images/pm-p-1600.webp",
     },
     {
@@ -129,7 +129,7 @@ export default function Portfolio() {
     {
       title: "Talks & Lectures",
       subtitle:
-        "Awarded for delivering the best speech in a Carpathian Basin-wide Rhetorics Competition, highlighting exceptional ability to effectively communicate ideas and thoughts to a diverse audience. Public speaking skills expertly honed through years of experience in delivering engaging, informative, and persuasive speeches for various events, including conferences and workshops.",
+        "Awarded for delivering the best speech in a Carpathian Basin-wide Rhetorics Competition, highlighting exceptional ability to effectively communicate ideas and thoughts to a diverse audience. Public speaking skills expertly honed through years of experience in delivering engaging, informative, and persuasive speeches for various events, conferences and workshops.",
       src: "/images/talks-p-1600.webp",
     },
   ];
@@ -228,7 +228,7 @@ export default function Portfolio() {
                 </a>
               </Button>
               <Button variant="default" size="sm" asChild>
-                <a href="mailto:milan@nmilan.com">E-mail</a>
+                <a href="mailto:me@nmilan.com">E-mail</a>
               </Button>
             </div>
           </div>
