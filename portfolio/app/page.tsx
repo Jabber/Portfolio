@@ -267,7 +267,7 @@ export default function Portfolio() {
           >
             <div className="w-full">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="space-y-6">
+                <div className="space-y-6 order-2 md:order-1">
                   <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight h-[100px] mb-8">
                     <span className="block mb-4">
                       Hi, I'm <span className="text-[#296e83]">Milan</span>, a
@@ -306,7 +306,7 @@ export default function Portfolio() {
                     </Button>
                   </div>
                 </div>
-                <div className="relative h-[300px] sm:h-[400px] md:h-[600px] w-full rounded-lg overflow-hidden shadow-xl mt-8 sm:mt-0">
+                <div className="relative h-[300px] sm:h-[400px] md:h-[600px] w-full rounded-lg overflow-hidden shadow-xl order-1 md:order-2">
                   <Image
                     src="/images/web3-p-1080.webp"
                     alt="Profile image"
