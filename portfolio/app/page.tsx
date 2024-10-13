@@ -4,16 +4,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import {
   Accordion,
   AccordionContent,
@@ -27,13 +17,8 @@ import {
   Github,
   Code,
   Database,
-  FileCode,
   Figma,
   Globe,
-  Laptop,
-  Layers,
-  Smartphone,
-  Tablet,
   Piano,
   Menu,
 } from "lucide-react";
@@ -271,7 +256,7 @@ export default function Portfolio() {
                   <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-8">
                     <span className="block sm:mb-4">
                       <span className="sm:hidden"><br /></span>
-                      Hi, I'm <span className="text-[#296e83]">Milan</span>, a
+                      Hi, I&apos;m <span className="text-[#296e83]">Milan</span>, a
                     </span>
                     <FlipWords
                       words={[
