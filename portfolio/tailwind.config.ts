@@ -87,18 +87,15 @@ const config: Config = {
   plugins: [animatePlugin, addVariablesForColors],
 };
 
-function addVariablesForColors<T extends Record<string, unknown>>({ addBase, theme }: {
-  addBase: (base: T) => void;
-  theme: (path: string) => Record<string, string>;
-}) {
-  const allColors = flattenColorPalette(theme("colors"));
-  const newVars = Object.fromEntries(
+function addVariablesForColors({ addBase, theme }: { addBase: any; theme: any }) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
 
   addBase({
     ":root": newVars,
-  } as T);
+  });
 }
 
 export default config;
