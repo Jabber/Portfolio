@@ -21,7 +21,7 @@ import {
 import { FocusCards } from "@/components/ui/focus-cards"
 import { FlipWords } from "@/components/ui/flip-words"
 import { motion } from "framer-motion"
-import { ThemeProvider } from "./components/theme-provider"
+import { ThemeProvider, useTheme } from "./components/theme-provider"
 import './index.css';
 
 
@@ -47,7 +47,7 @@ const icons = [
 function App() {
   const [activeSection, setActiveSection] = useState("home")
   const [mounted, setMounted] = useState(false)
-  const [theme, setTheme] = useState("light")
+  const { theme, setTheme } = useTheme()
   const [duplicatedIcons, setDuplicatedIcons] = useState(icons)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -189,12 +189,11 @@ function App() {
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 aria-label="Toggle theme"
               >
-                {mounted &&
-                  (theme === "dark" ? (
-                    <Sun className="h-[1.2rem] w-[1.2rem]" />
-                  ) : (
-                    <Moon className="h-[1.2rem] w-[1.2rem]" />
-                  ))}
+                {mounted && (theme === "dark" ? (
+                  <Sun className="h-[1.2rem] w-[1.2rem]" />
+                ) : (
+                  <Moon className="h-[1.2rem] w-[1.2rem]" />
+                ))}
               </Button>
               <Button variant="ghost" size="icon" asChild>
                 <a
@@ -320,6 +319,8 @@ function App() {
             </div>
           </section>
 
+          <br />
+          <br />
           {/* Icons Section */}
           <div className="w-full overflow-hidden py-12 relative">
             <div className="absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-gray-100 dark:from-gray-900 to-transparent z-10"></div>
