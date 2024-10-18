@@ -94,25 +94,25 @@ function App() {
       title: "Product Management",
       subtitle:
         "Extensive experience in product management with a proven track record: development of a cost engineering BI tool with over 1000 corporate users, a 1M USD/yr enterprise SAAS, or an asset-based consulting tool, merging UI and UX efforts with rapid prototypes, coordinating workstreams from in-house app development through service blueprint creation and architectural planning.",
-      src: "/images/pm-p-1600.webp",
+      src: "/images/pm.webp",
     },
     {
       title: "Digital Business Building",
       subtitle:
         "Built teams of 20+ people for product development, coordinated design teams, and led teams of consultants to shape the long-term transformation strategy of a higher education institution. Managed multiple cross-functional agile teams of 6-10 people developing and designing enterprise-scale digital solutions.",
-      src: "/images/build-p-1600.webp",
+      src: "/images/build.webp",
     },
     {
       title: "Data & Analytics",
       subtitle:
         "Managed the development of advanced analytics tools, BI tools, optimized quality control scheduling models in Python, being responsible for data analytics strategy, driving the development of intelligent solutions with AI, ML. Implemented data mining algorithms and automated processes for HR startups. Built portfolio optimization models for energy trading.",
-      src: "/images/ds-p-1080.webp",
+      src: "/images/ds.webp",
     },
     {
       title: "Talks & Lectures",
       subtitle:
         "Awarded for delivering the best speech in a Carpathian Basin-wide Rhetorics Competition, highlighting exceptional ability to effectively communicate ideas and thoughts to a diverse audience. Public speaking skills expertly honed through years of experience in delivering engaging, informative, and persuasive speeches for various events, conferences and workshops.",
-      src: "/images/talks-p-1600.webp",
+      src: "/images/talks.webp",
     },
   ]
 
@@ -288,7 +288,7 @@ function App() {
                 </div>
                 <div className="relative h-[300px] sm:h-[450px] md:h-[600px] w-full rounded-lg overflow-hidden shadow-xl order-1 md:order-2 mt-0 sm:mt-0">
                   <img
-                    src="/images/web3-p-1080.webp"
+                    src="/images/profile.webp"
                     alt="Profile image"
                     style={{ objectFit: "cover", objectPosition: "top" }}
                     className="absolute inset-0 w-full h-full rounded-lg"
