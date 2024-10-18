@@ -29,17 +29,17 @@ export const Card = React.memo(
       />
       <div
         className={cn(
-          "absolute inset-0 flex items-end py-8 px-4 transition-all duration-300",
+          "absolute inset-0 flex items-end transition-all duration-300",
           hovered === index 
-            ? "opacity-100 bg-black/50" 
-            : "bg-gradient-to-b from-transparent via-black/25 to-black/40"
+            ? "opacity-100 bg-black/50 py-4 px-4" 
+            : "bg-gradient-to-b from-transparent via-black/25 to-black/40 py-12 px-4"
         )}
       >
         <div 
           className={cn(
             "font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200 transition-all duration-300",
             hovered === index 
-              ? "text-base md:text-lg opacity-50" 
+              ? "text-base md:text-lg opacity-40" 
               : "text-xl md:text-2xl opacity-100"
           )}
         >
