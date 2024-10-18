@@ -298,6 +298,7 @@ function App() {
             </div>
           </section>
 
+          <br />
           {/* KPI Section */}
           <section
             id="kpi"
