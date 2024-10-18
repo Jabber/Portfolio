@@ -32,7 +32,6 @@ export function ThemeProvider({
 
   useEffect(() => {
     const root = window.document.documentElement
-    console.log("Current theme:", theme) // Add this line for debugging
 
     root.classList.remove("light", "dark")
 
@@ -43,17 +42,14 @@ export function ThemeProvider({
         : "light"
 
       root.classList.add(systemTheme)
-      console.log("Applied system theme:", systemTheme) // Add this line for debugging
     } else {
       root.classList.add(theme)
-      console.log("Applied theme:", theme) // Add this line for debugging
     }
   }, [theme])
 
   const value = {
     theme,
     setTheme: (theme: Theme) => {
-      console.log("Setting theme to:", theme) // Add this line for debugging
       localStorage.setItem(storageKey, theme)
       setTheme(theme)
     },
