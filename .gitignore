@@ -45,3 +45,24 @@ next-env.d.ts
 # Cursor
 **/.cursorignore
 .cursorignore
+
+# Logs
+logs
+*.log
+lerna-debug.log*
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Vite
+dist
+dist-ssr
+*.local
+
+# Pf
+old_pf

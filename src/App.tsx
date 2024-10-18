@@ -1,15 +1,11 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Head from "next/head";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from 'react'
+import { Button } from "@/components/ui/button"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "@/components/ui/accordion"
 import {
   Moon,
   Sun,
@@ -21,12 +17,13 @@ import {
   Globe,
   Piano,
   Menu,
-} from "lucide-react";
-import { useTheme } from "next-themes";
-import { FocusCards } from "@/components/ui/focus-cards";
-import { FlipWords } from "@/components/ui/flip-words";
-import { motion } from "framer-motion";
-import { ThemeProvider } from "next-themes";
+} from "lucide-react"
+import { FocusCards } from "@/components/ui/focus-cards"
+import { FlipWords } from "@/components/ui/flip-words"
+import { motion } from "framer-motion"
+import { ThemeProvider } from "./components/theme-provider"
+import './index.css';
+
 
 const icons = [
   { Icon: Github, name: "GitHub" },
@@ -45,52 +42,52 @@ const icons = [
   { src: "/icons/light_mode/pytorch-original.svg", darkSrc: "/icons/dark_mode/pytorch-original.svg", name: "PyTorch" },
   { src: "/icons/light_mode/sqlite-plain.svg", darkSrc: "/icons/dark_mode/sqlite-plain.svg", name: "SQLite" },
   { src: "/icons/light_mode/vscode-original.svg", darkSrc: "/icons/dark_mode/vscode-original.svg", name: "VS Code" },
-];
+]
 
-export default function Portfolio() {
-  const [activeSection, setActiveSection] = useState("home");
-  const [mounted, setMounted] = useState(false);
-  const { setTheme, theme } = useTheme();
-  const [duplicatedIcons, setDuplicatedIcons] = useState(icons);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+function App() {
+  const [activeSection, setActiveSection] = useState("home")
+  const [mounted, setMounted] = useState(false)
+  const [theme, setTheme] = useState("light")
+  const [duplicatedIcons, setDuplicatedIcons] = useState(icons)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
-    setMounted(true);
-    setDuplicatedIcons([...icons, ...icons]);
-  }, []);
+    setMounted(true)
+    setDuplicatedIcons([...icons, ...icons])
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "kpi", "experience", "impact", "faq"];
-      const scrollPosition = window.scrollY;
+      const sections = ["home", "kpi", "experience", "impact", "faq"]
+      const scrollPosition = window.scrollY
 
       for (const section of sections) {
-        const element = document.getElementById(section);
+        const element = document.getElementById(section)
         if (element && scrollPosition >= element.offsetTop - 100) {
-          setActiveSection(section);
+          setActiveSection(section)
         }
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const scrollToSection = (sectionId: string, additionalOffset: number = 0) => {
-    const element = document.getElementById(sectionId);
+    const element = document.getElementById(sectionId)
     if (element) {
-      const yOffset = -25 - additionalOffset;
-      const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
-      window.scrollTo({top: y, behavior: 'smooth'});
+      const yOffset = -25 - additionalOffset
+      const y = element.getBoundingClientRect().top + window.scrollY + yOffset
+      window.scrollTo({top: y, behavior: 'smooth'})
     }
-  };
+  }
 
   const kpiData = [
     { label: "Years Experience", value: "10+" },
     { label: "People Led", value: "100+" },
     { label: "Products Built", value: "8" },
     { label: "Industries Served", value: "10+" },
-  ];
+  ]
 
   const impactCards = [
     {
@@ -117,7 +114,7 @@ export default function Portfolio() {
         "Awarded for delivering the best speech in a Carpathian Basin-wide Rhetorics Competition, highlighting exceptional ability to effectively communicate ideas and thoughts to a diverse audience. Public speaking skills expertly honed through years of experience in delivering engaging, informative, and persuasive speeches for various events, conferences and workshops.",
       src: "/images/talks-p-1600.webp",
     },
-  ];
+  ]
 
   const faqItems = [
     {
@@ -140,19 +137,16 @@ export default function Portfolio() {
       answer:
         "I'm currently focused on revolutionizing consulting. Drawing from my extensive experience in leading teams and driving digital transformations, I'm working on developing the best product in the market that aims to create a large-scale impact on the industry.",
     },
-  ];
+  ]
 
   if (!mounted) {
-    return null;
+    return null
   }
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
-        <Head>
-          <title>Milan Nguyen - Digital Leader</title>
-          <link rel="icon" href="/images/favicon.png" />
-        </Head>
+        {/* Navigation */}
         <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-6xl px-4">
           <div className="flex justify-between space-x-4">
             <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg px-4 py-2 sm:px-6 sm:py-3 flex items-center">
@@ -245,7 +239,9 @@ export default function Portfolio() {
             </div>
           )}
         </nav>
+
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Home Section */}
           <section
             id="home"
             className="min-h-screen flex items-center justify-center pt-24 sm:pt-0"
@@ -292,18 +288,18 @@ export default function Portfolio() {
                   </div>
                 </div>
                 <div className="relative h-[300px] sm:h-[450px] md:h-[600px] w-full rounded-lg overflow-hidden shadow-xl order-1 md:order-2 mt-0 sm:mt-0">
-                  <Image
+                  <img
                     src="/images/web3-p-1080.webp"
                     alt="Profile image"
-                    fill
                     style={{ objectFit: "cover", objectPosition: "top" }}
-                    className="rounded-lg"
+                    className="absolute inset-0 w-full h-full rounded-lg"
                   />
                 </div>
               </div>
             </div>
           </section>
 
+          {/* KPI Section */}
           <section
             id="kpi"
             className="w-screen py-8 bg-white dark:bg-gray-800 border-y border-gray-200 dark:border-gray-700 shadow-lg -mx-[calc((100vw-100%)/2)]"
@@ -324,9 +320,7 @@ export default function Portfolio() {
             </div>
           </section>
 
-          <br />
-          <br />
-
+          {/* Icons Section */}
           <div className="w-full overflow-hidden py-12 relative">
             <div className="absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-gray-100 dark:from-gray-900 to-transparent z-10"></div>
             <div className="absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-gray-100 dark:from-gray-900 to-transparent z-10"></div>
@@ -357,7 +351,7 @@ export default function Portfolio() {
                       aria-hidden="true"
                     />
                   ) : (
-                    <Image
+                    <img
                       src={theme === 'dark' ? item.darkSrc : item.src}
                       alt={item.name}
                       width={48}
@@ -373,6 +367,7 @@ export default function Portfolio() {
             </motion.div>
           </div>
 
+          {/* Experience Section */}
           <section
             id="experience"
             className="py-16 flex items-center justify-center"
@@ -406,6 +401,7 @@ export default function Portfolio() {
             </div>
           </section>
 
+          {/* Impact Section */}
           <section id="impact" className="py-16">
             <h2 className="text-2xl font-bold mb-8 text-center">Impact</h2>
             <div className="w-full">
@@ -413,6 +409,7 @@ export default function Portfolio() {
             </div>
           </section>
 
+          {/* FAQ Section */}
           <section id="faq" className="py-16 flex items-top justify-center">
             <div className="w-full max-w-full sm:max-w-[calc(100%-2rem)] md:max-w-[calc(100%-12rem)] bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg p-4 sm:p-6">
               <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-left">
@@ -435,5 +432,7 @@ export default function Portfolio() {
         </div>
       </div>
     </ThemeProvider>
-  );
+  )
 }
+
+export default App
